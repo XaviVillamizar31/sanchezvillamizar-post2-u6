@@ -10,6 +10,16 @@
 <body>
 <h1>${empty producto ? "Registrar Producto" : "Editar Producto"}</h1>
 
+<c:if test="${not empty errores}">
+    <div class="alert-error">
+        <ul>
+            <c:forEach var="e" items="${errores}">
+                <li>${e.value}</li>
+            </c:forEach>
+        </ul>
+    </div>
+</c:if>
+
 <form method="post" action="<c:url value="/productos"/>">
 
     <c:if test="${not empty producto}">
@@ -22,22 +32,34 @@
 
     <label>Nombre:
         <input type="text" name="nombre" required
-               value="<c:out value="${producto.nombre}"/>">
+               value="<c:out value="${not empty nombre ? nombre : producto.nombre}"/>"
+               class="${not empty errores.nombre ? 'input-error' : ''}">
+        <c:if test="${not empty errores.nombre}">
+            <span class="campo-error">${errores.nombre}</span>
+        </c:if>
     </label>
 
     <label>Categoría:
         <input type="text" name="categoria"
-               value="<c:out value="${producto.categoria}"/>">
+               value="<c:out value="${not empty categoria ? categoria : producto.categoria}"/>">
     </label>
 
     <label>Precio:
         <input type="number" name="precio" step="0.01" min="0" required
-               value="${producto.precio}">
+               value="${not empty precio ? precio : producto.precio}"
+               class="${not empty errores.precio ? 'input-error' : ''}">
+        <c:if test="${not empty errores.precio}">
+            <span class="campo-error">${errores.precio}</span>
+        </c:if>
     </label>
 
     <label>Stock:
         <input type="number" name="stock" min="0" required
-               value="${producto.stock}">
+               value="${not empty stock ? stock : producto.stock}"
+               class="${not empty errores.stock ? 'input-error' : ''}">
+        <c:if test="${not empty errores.stock}">
+            <span class="campo-error">${errores.stock}</span>
+        </c:if>
     </label>
 
     <button type="submit">${empty producto ? "Guardar" : "Actualizar"}</button>
