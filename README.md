@@ -1,6 +1,6 @@
 ## CRUD de Productos con MVC — Autenticación, Validaciones e i18n
 Programación Web — Unidad 6: JSP con MVC
-Universidad Internacional de Santander (UDES) — Ingeniería de Sistemas 2026
+Universidad de Santander (UDES) — Ingeniería de Sistemas 2026
 
 ## Descripción
 Extensión de la aplicación MVC del Post-Contenido 1 que incorpora autenticación de usuarios con HttpSession, validaciones robustas en el servidor con retroalimentación de errores hacia la vista, y soporte de internacionalización (i18n) con ResourceBundle para español e inglés con selector de idioma persistido en sesión.
